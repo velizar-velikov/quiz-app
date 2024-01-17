@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <script src="./js/main.js" type="module"></script>
+</head>
+
+<body>
+    <div class="quiz-container" id="quiz-container">
+        <h2 class="question" id="question">What is JavaScript?</h2>
+        <ul class="options" id="options">
+            <li class="option">
+                <input type="radio" name="option" id="a">
+                <label for="a" id="a_text">Option</label>
+            </li>
+            <li class="option">
+                <input type="radio" name="option" id="b">
+                <label for="b" id="b_text">Option</label>
+            </li>
+            <li class="option">
+                <input type="radio" name="option" id="c">
+                <label for="c" id="c_text">Option</label>
+            </li>
+            <li class="option">
+                <input type="radio" name="option" id="d">
+                <label for="d" id="d_text">Option</label>
+            </li>
+        </ul>
+        <button class="submit-btn" id="submit-btn">Submit answer</button>
+    </div>
+
+    <div class="score-container" id="score-container">
+        <h1 class="pass" id="pass">Congratulations! You passed.</h1>
+        <h2 class="text">Your score is:</h2>
+        <div class="score" id="score">7/7</div>
+    </div>
+
+</body>
+
+</html>
