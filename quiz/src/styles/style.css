@@ -74,6 +74,11 @@ body {
     margin-bottom: 0.8em;
 }
 
+.option input,
+.option label {
+    cursor: pointer;
+}
+
 .submit-btn {
     display: inline-block;
     font-size: 1.1em;
