@@ -82,5 +82,15 @@ function showScore() {
         score.classList.add('incorrect');
     }
     score.textContent = `${correctAnswersCount} / ${questions.length}`;
+    addReloadButton();
 
+    function addReloadButton() {
+        const reloadBtn = document.createElement('button');
+        reloadBtn.setAttribute('class', 'submit-btn');
+        reloadBtn.textContent = 'Reload quiz';
+        reloadBtn.addEventListener('click', () => {
+            location.reload();
+        })
+        scoreContainer.appendChild(reloadBtn);
+    }
 }
