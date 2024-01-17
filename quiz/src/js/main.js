@@ -17,11 +17,6 @@ const quizContainer = document.getElementById('quiz-container');
 loadQuestion();
 
 function changeQuestion() {
-    if (currentQuestion >= questions.length - 1) {
-        getScore();
-        showScore();
-        return;
-    }
 
     if (currentQuestion <= questions.length - 1) {
         const optionInputs = [
@@ -47,6 +42,12 @@ function changeQuestion() {
                 currentQuestion++;
             }
             optionInputs.find(option => option.checked === true).checked = false;
+
+            if (currentQuestion > questions.length - 1) {
+                getScore();
+                showScore();
+                return;
+            }
             loadQuestion();
         }
     }
@@ -78,8 +79,8 @@ function showScore() {
         score.classList.add('correct');
     } else {
         passEl.textContent = 'You failed :(';
-        score.textContent = `${correctAnswersCount} / ${questions.length}`;
         score.classList.add('incorrect');
     }
+    score.textContent = `${correctAnswersCount} / ${questions.length}`;
 
 }
