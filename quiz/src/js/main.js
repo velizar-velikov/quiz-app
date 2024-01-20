@@ -11,20 +11,26 @@ const b_text = document.getElementById('b_text');
 const c_text = document.getElementById('c_text');
 const d_text = document.getElementById('d_text');
 
+const texts = [a_text, b_text, c_text, d_text];
+
+const optionInputs = [
+    document.getElementById('a'),
+    document.getElementById('b'),
+    document.getElementById('c'),
+    document.getElementById('d')
+];
 const questionEl = document.getElementById('question');
 const quizContainer = document.getElementById('quiz-container');
+
+const scoreContainer = document.getElementById('score-container');
+const passEl = document.getElementById('pass');
+const score = document.getElementById('score');
 
 loadQuestion();
 
 function changeQuestion() {
 
     if (currentQuestion <= questions.length - 1) {
-        const optionInputs = [
-            document.getElementById('a'),
-            document.getElementById('b'),
-            document.getElementById('c'),
-            document.getElementById('d')
-        ];
 
         if (optionInputs.some(option => option.checked === true)) {
             const answer = questions[currentQuestion].answer;
@@ -56,10 +62,9 @@ function changeQuestion() {
 function loadQuestion() {
 
     questionEl.textContent = questions[currentQuestion].question;
-    a_text.textContent = questions[currentQuestion].options.a;
-    b_text.textContent = questions[currentQuestion].options.b;
-    c_text.textContent = questions[currentQuestion].options.c;
-    d_text.textContent = questions[currentQuestion].options.d;
+    texts.forEach(text => {
+        text.textContent = questions[currentQuestion].options[`${text.getAttribute('for')}`];
+    })
 }
 
 function getScore() {
@@ -68,11 +73,7 @@ function getScore() {
 
 function showScore() {
     quizContainer.style.display = 'none';
-    const scoreContainer = document.getElementById('score-container');
     scoreContainer.style.display = 'flex';
-
-    const passEl = document.getElementById('pass');
-    const score = document.getElementById('score');
 
     if (getScore() >= 70) {
         passEl.textContent = 'Congratulations! You passed!';
